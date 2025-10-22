@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="InstituteManagement.Views.AttendanceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:common="clr-namespace:InstituteManagement.Common">
+
+    <UserControl.Resources>
+        <common:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+            <TextBlock Text="Attendance Management" FontSize="24" FontWeight="Bold"/>
+        </StackPanel>
+
+        <!-- Filters -->
+        <GroupBox Grid.Row="1" Header="Select Batch and Date" Padding="15" Margin="0,0,0,20">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Batch:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <ComboBox Width="200" Height="35" Margin="0,0,20,0"/>
+
+                <TextBlock Text="Date:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <DatePicker Width="120" Height="35"/>
+
+                <Button Content="Load Attendance" Width="120" Height="35" 
+                       HorizontalAlignment="Right" Margin="20,0,0,0"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Attendance Grid -->
+        <DataGrid Grid.Row="2" AutoGenerateColumns="False" 
+                  CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Student ID" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Student Name" Width="200" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Status" Width="100"/>
+                <DataGridTextColumn Header="Remarks" Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Save Button -->
+        <Button Grid.Row="3" Content="💾 Save Attendance" 
+               HorizontalAlignment="Right" Margin="0,20,0,0"
+               Width="140" Height="40" Background="#4CAF50"/>
+    </Grid>
+</UserControl>
